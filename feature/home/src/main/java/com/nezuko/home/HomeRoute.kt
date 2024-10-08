@@ -8,8 +8,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun HomeRoute(
     onTextClick: () -> Unit,
     modifier: Modifier = Modifier,
-
-    // либо через koinViewModel сделать, либо передавать в функцию и создавать вью модель выше
     viewModel: HomeViewModel = viewModel()
 ) {
     HomeScreen(onTextClick = onTextClick)

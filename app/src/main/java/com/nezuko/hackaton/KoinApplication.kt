@@ -3,7 +3,6 @@ package com.nezuko.hackaton
 import android.app.Application
 import android.content.Context
 import com.nezuko.hackaton.di.coroutinesModule
-import com.nezuko.hackaton.di.dataModule
 import com.nezuko.hackaton.di.dispatchersModule
 import com.nezuko.hackaton.di.domainModule
 import com.nezuko.hackaton.di.viewModelModule
@@ -18,13 +17,13 @@ class KoinApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
+            androidContext(applicationContext)
             module {
                 single { this@KoinApplication } binds arrayOf(Context::class, Application::class)
             }
 
             androidLogger(Level.DEBUG)
-            modules(coroutinesModule, dataModule, dispatchersModule, domainModule, viewModelModule)
-            androidContext(applicationContext)
+            modules(coroutinesModule, dispatchersModule, domainModule, viewModelModule)
         }
     }
 }

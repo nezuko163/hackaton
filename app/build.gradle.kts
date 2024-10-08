@@ -57,6 +57,9 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:data"))
     implementation(project(":feature:home"))
+    implementation(project(":feature:biometry"))
+    implementation(project(":feature:face"))
+    implementation(project(":feature:voice"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -74,8 +77,13 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+
+    // Koin
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.androidx.compose.navigation)
 
+    // Voyager
+    implementation(libs.voyager.navigator)
+    implementation(libs.voyager.transitions)
 
 }
