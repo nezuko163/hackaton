@@ -14,12 +14,15 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     onTextClick: () -> Unit,
 ) {
-    Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .clickable { onTextClick() },
+        contentAlignment = Alignment.Center
+    ) {
         Text(
             text = "Установить биометрические данные",
-            modifier = Modifier
-                .clickable { onTextClick() },
-
+            modifier = Modifier,
             )
 
     }
