@@ -1,5 +1,6 @@
 package com.nezuko.hackaton.navigation
 
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
@@ -9,6 +10,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.nezuko.biometry.BiometryRoute
 import com.nezuko.biometry.BiometryViewModel
 import com.nezuko.face.FaceRoute
+import com.nezuko.facehints.FaceHintsRoute
 import com.nezuko.home.HomeRoute
 import com.nezuko.home.HomeViewModel
 import com.nezuko.home.PermissionRoute
@@ -57,22 +59,34 @@ class BiometryScreen : Screen {
 
 }
 
-class FaceScreen: Screen {
+class FaceScreen : Screen {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         FaceRoute(
+            onCapture = { uri ->
 
+                navigator.push(FaceHintsScreen(uri))
+            }
         )
     }
 }
 
-class VoiceScreen: Screen {
+class VoiceScreen : Screen {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         VoiceRoute(
 
         )
+    }
+}
+
+class FaceHintsScreen(private val imageUri: Uri) : Screen {
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+
+        FaceHintsRoute(imageUri = imageUri)
     }
 }

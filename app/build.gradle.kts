@@ -59,6 +59,7 @@ dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:biometry"))
     implementation(project(":feature:face"))
+    implementation(project(":feature:faceHints"))
     implementation(project(":feature:voice"))
 
     implementation(libs.androidx.core.ktx)

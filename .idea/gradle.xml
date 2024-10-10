@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/biometry" />
             <option value="$PROJECT_DIR$/feature/face" />
+            <option value="$PROJECT_DIR$/feature/faceHints" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/voice" />
           </set>

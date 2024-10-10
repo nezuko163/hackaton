@@ -1,6 +1,7 @@
 package com.nezuko.face
 
 import android.Manifest
+import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +23,7 @@ const val TAG = "FACE_ROUTE"
 
 @Composable
 fun FaceRoute(
+    onCapture: (Uri) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: FaceViewModel = koinViewModel()
 ) {
@@ -49,7 +51,7 @@ fun FaceRoute(
     }
 
     if (cameraPermission) {
-        FaceScreen()
+        FaceScreen(onCapture = onCapture)
     } else {
         Box(
             modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center,
