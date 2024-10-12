@@ -1,6 +1,8 @@
 package com.nezuko.home
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -10,5 +12,7 @@ fun HomeRoute(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel()
 ) {
-    HomeScreen(onTextClick = onTextClick)
+    HomeScreen {
+        onTextClick()
+    }
 }

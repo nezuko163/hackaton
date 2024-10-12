@@ -32,8 +32,6 @@ fun FaceScreen(
     onCapture: (Uri) -> Unit
 ) {
     var isFirstLoading by rememberSaveable { mutableStateOf(true) }
-
-    val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     Log.i(TAG, "FaceScreen: $isFirstLoading")
     ScreenWithHint(
@@ -43,7 +41,7 @@ fun FaceScreen(
                 onCapture = onCapture
             )
         },
-        text = "поместите лицо в овал",
+        text = "поместите лицо в овал\nвстаньте рядом с светом\nснимите головной убор",
         onClick = { isFirstLoading = false },
         shouldShowHint = isFirstLoading
     )

@@ -1,8 +1,11 @@
 package com.nezuko.hackaton.navigation
 
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -18,12 +21,20 @@ import com.nezuko.voice.VoiceRoute
 import org.koin.androidx.compose.koinViewModel
 
 class HomeScreen : Screen {
+    private val TAG = "SCREENS__"
+
     @Composable
     override fun Content() {
         val vm: HomeViewModel = koinViewModel()
         val navigator = LocalNavigator.currentOrThrow
+        val shouldShowDataPermission by vm.shouldShowDataPermission.collectAsState(false)
+        Log.i(TAG, "Content: $shouldShowDataPermission")
         HomeRoute(
-            onTextClick = { navigator.push(PermissionScreen()) },
+            onTextClick = {
+                if (!shouldShowDataPermission) navigator.push(PermissionScreen())
+                else navigator.push(BiometryScreen())
+                vm.edit(true)
+            },
             viewModel = vm
         )
     }
@@ -34,7 +45,7 @@ class PermissionScreen : Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         PermissionRoute(
-            onAllowedButtonClick = { navigator.replaceAll(BiometryScreen()) },
+            onAllowedButtonClick = { navigator.replace(BiometryScreen()) },
             onDismissButtonClick = { TODO() }
         )
     }

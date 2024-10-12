@@ -10,7 +10,7 @@ import cafe.adriel.voyager.transitions.SlideTransition
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
-    startDestination: Screen = FaceScreen()
+    startDestination: Screen = HomeScreen()
 ) {
     Navigator(screen = startDestination) { navigator ->
         when (navigator.lastItem) {

@@ -1,9 +1,12 @@
 package com.nezuko.ui.composable
 
 import android.util.Log
+import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,19 +37,25 @@ fun ShowHint(
                 .background(color = Color.Black.copy(alpha = 0.6f)),
             contentAlignment = Alignment.Center
         ) {
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(40.dp))
-                    .background(LightBlue)
 
-            ) {
-                Text(
+            Column {
+                Spacer(modifier = Modifier.padding(100.dp))
+                Box(
                     modifier = Modifier
-                        .padding(Spacing.default.large),
-                    text = text,
-                    color = Color.White
-                )
+                        .clip(RoundedCornerShape(40.dp))
+                        .background(LightBlue)
+
+                ) {
+                    Text(
+                        modifier = Modifier
+                            .padding(Spacing.default.large),
+                        text = text,
+                        color = Color.White
+                    )
+                }
             }
+
+
         }
     }
 }
@@ -64,7 +73,10 @@ fun ScreenWithHint(
         Box(modifier = modifier) {
             screen()
 
-            ShowHint(text = text, onClick = onClick)
+            ShowHint(
+                text = text,
+                onClick = onClick
+            )
         }
     } else {
         screen()

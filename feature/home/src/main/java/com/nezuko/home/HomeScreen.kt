@@ -23,7 +23,7 @@ fun HomeScreen(
         Text(
             text = "Установить биометрические данные",
             modifier = Modifier,
-            )
+        )
 
     }
 }
